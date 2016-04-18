@@ -1,0 +1,41 @@
+---
+title: "web scraping"
+output: html_document
+---
+
+
+* Name: YUE BAI; email: bai42@wisc.edu
+
+
+```{r}
+rm(list=ls())
+
+if (!require("XML")) { # for readHTMLTable()
+  install.packages("XML")
+  stopifnot(require("XML"))
+}
+if (!require("RCurl")) {
+  install.packages("RCurl") # do this once per lifetime
+  stopifnot(require("RCurl")) # do this once per session
+}
+lines<-readLines("http://www.last.fm/music/The+Beatles/+albums")
+albums.lines<-grep(pattern="href=\"/music/The\\+Beatles/", x=lines, value=TRUE)
+albums.lines<-albums.lines[10:length(albums.lines)]
+counts<-c()
+names<-c()
+for(i in 1:(length(albums.lines))){
+  albums.link <- sub(pattern=".*href=\"(.*?)\"", replacement="http://www.last.fm\\1", x=albums.lines[i])
+  tables <- readHTMLTable(getURL(albums.link))
+  Track.name<-as.character(tables[[2]][,4])
+  listeners<-tables[[2]]$Listeners
+  listeners<-sub(pattern=",",replacement="",listeners)
+  listeners<-as.numeric(sub(pattern="listeners",replacement="",listeners))
+  counts<-c(counts,listeners)
+  names<-c(names,Track.name) 
+}
+result<-data.frame(counts,names)
+result<-unique(result)
+rank<-result[order(result$counts,decreasing=T),]
+rank[1:50,]
+```
+
