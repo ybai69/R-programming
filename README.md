@@ -1,5 +1,7 @@
 # R-programming
+
 some programs in r
+
 The " Connect Four-minimax.R" is game program. 
 I use minimax algorithm in this program, so that the computer player can make a choice, instead of choosing randomly.
 By increasing the "depth", the computer player may find a better choice, but it may also take longer time in process.
