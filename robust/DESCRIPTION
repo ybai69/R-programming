@@ -1,0 +1,10 @@
+Package: robust
+Title: What the Package Does (one line, title case)
+Version: 0.1
+Authors@R: person("Yue", "Bai", email = "bai42@wisc.edu", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends:
+    R (>= 3.0.2)
+License: GPL-2
+LazyData: true
+RoxygenNote: 5.0.1
