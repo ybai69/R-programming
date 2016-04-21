@@ -10,3 +10,7 @@ The "lasso_relative_methods.R" is the code that I used in my undergraduate thesi
 In the code, I established a linear model based on lasso, adaptive-lasso, SCAD, elastic net, group lasso and group SCAD with real data.
 
 The "web scrapping.Rmd" is a simple wep scrapping program.
+
+The "Robust" is a R package. It is a practice of making a r package.
+
+The "stat601_project" is a small project that we use some methods to analyze medical clinic data.
